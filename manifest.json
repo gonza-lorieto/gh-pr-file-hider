@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub PR File Hider",
+  "version": "1.0",
+  "description": "Hides specified files in GitHub pull request pages.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://github.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*/*/pull/*/files"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
